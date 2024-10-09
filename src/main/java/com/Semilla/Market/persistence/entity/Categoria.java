@@ -3,6 +3,8 @@ package com.Semilla.Market.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categorias")
 public class Categoria {
@@ -14,7 +16,10 @@ public class Categoria {
 
     private String descripcion;
 
-    private boolean estado;
+    private Boolean estado;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 
 
     public Integer getIdCategoria() {
@@ -33,11 +38,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }

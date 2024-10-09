@@ -25,7 +25,11 @@ public class Producto {
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
 
-    private boolean estado;
+    private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false,updatable = false)
+    private Categoria categoria;
 
     public String getCodigoBarras() {
         return codigoBarras;
@@ -75,11 +79,11 @@ public class Producto {
         this.cantidadStock = cantidadStock;
     }
 
-    public boolean isEstado() {
+    public Boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }
